@@ -1,0 +1,92 @@
+/**
+ * Minimal utility layer (Bootstrap-style) — uses design tokens from globals.css
+ */
+
+/* Display */
+.ui-d-flex {
+  display: flex;
+}
+.ui-d-block {
+  display: block;
+}
+.ui-flex-col {
+  flex-direction: column;
+}
+.ui-flex-1 {
+  flex: 1 1 0%;
+}
+.ui-items-center {
+  align-items: center;
+}
+.ui-justify-center {
+  justify-content: center;
+}
+.ui-justify-between {
+  justify-content: space-between;
+}
+.ui-gap-2 {
+  gap: var(--ui-space-2);
+}
+.ui-gap-4 {
+  gap: var(--ui-space-4);
+}
+.ui-gap-6 {
+  gap: var(--ui-space-6);
+}
+
+/* Spacing */
+.ui-m-0 {
+  margin: 0;
+}
+.ui-mt-6 {
+  margin-top: var(--ui-space-6);
+}
+.ui-mt-8 {
+  margin-top: var(--ui-space-8);
+}
+.ui-mb-2 {
+  margin-bottom: var(--ui-space-2);
+}
+.ui-mb-4 {
+  margin-bottom: var(--ui-space-4);
+}
+.ui-py-8 {
+  padding-top: var(--ui-space-8);
+  padding-bottom: var(--ui-space-8);
+}
+.ui-py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Typography */
+.ui-text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.ui-text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.ui-font-medium {
+  font-weight: 500;
+}
+.ui-text-muted {
+  color: var(--ui-fg-muted);
+}
+.ui-text-center {
+  text-align: center;
+}
+
+/* Layout */
+.ui-min-h-screen {
+  min-height: 100vh;
+}
+.ui-w-full {
+  width: 100%;
+}
+
+/* Borders */
+.ui-border-b {
+  border-bottom: 1px solid var(--ui-border);
+}

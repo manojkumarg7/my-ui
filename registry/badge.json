@@ -1,0 +1,9 @@
+{
+  "name": "badge",
+  "description": "Small pill labels for status, count, or category",
+  "dependencies": ["lib/utils.ts", "styles/globals.css"],
+  "files": [
+    { "path": "components/ui/Badge.tsx", "role": "component" },
+    { "path": "lib/utils.ts", "role": "util" }
+  ]
+}

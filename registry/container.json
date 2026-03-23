@@ -1,0 +1,9 @@
+{
+  "name": "container",
+  "description": "Responsive centered container",
+  "dependencies": ["lib/utils.ts", "styles/globals.css"],
+  "files": [
+    { "path": "components/ui/container.tsx", "role": "component" },
+    { "path": "lib/utils.ts", "role": "util" }
+  ]
+}

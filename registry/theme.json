@@ -1,0 +1,15 @@
+{
+  "name": "theme",
+  "description": "Theme storage key, inline script, useTheme hook, ThemeToggle",
+  "dependencies": ["lib/theme.ts", "styles/globals.css"],
+  "files": [
+    { "path": "lib/theme.ts", "role": "util" },
+    { "path": "hooks/useTheme.ts", "role": "hook" },
+    { "path": "components/ui/theme-toggle.tsx", "role": "component" },
+    {
+      "path": "app/layout.tsx",
+      "role": "layout",
+      "note": "Merge script block; do not overwrite whole file"
+    }
+  ]
+}

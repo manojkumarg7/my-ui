@@ -1,0 +1,9 @@
+{
+  "name": "breadcrumb",
+  "description": "Navigation breadcrumb with separators",
+  "dependencies": ["lib/utils.ts", "styles/globals.css"],
+  "files": [
+    { "path": "components/ui/Breadcrumb.tsx", "role": "component" },
+    { "path": "lib/utils.ts", "role": "util" }
+  ]
+}

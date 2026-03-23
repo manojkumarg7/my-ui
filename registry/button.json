@@ -1,0 +1,9 @@
+{
+  "name": "button",
+  "description": "Primary and secondary button using CSS variables",
+  "dependencies": ["lib/utils.ts", "styles/globals.css"],
+  "files": [
+    { "path": "components/ui/Button.tsx", "role": "component" },
+    { "path": "lib/utils.ts", "role": "util" }
+  ]
+}
