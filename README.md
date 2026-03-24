@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# my-ui
 
-## Getting Started
+Next.js UI framework with CLI — init styles, theme, and add components (Button, Alert, Badge, Breadcrumb). Built with Tailwind CSS v4.
 
-First, run the development server:
+## Installation
+
+Use the CLI in any Next.js project:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Initialize my-ui (styles, theme, globals)
+npx @manojkumarg7/my-ui init
+
+# Add components
+npx @manojkumarg7/my-ui add button
+npx @manojkumarg7/my-ui add alert
+npx @manojkumarg7/my-ui add badge
+npx @manojkumarg7/my-ui add breadcrumb
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Use `--force` to overwrite existing files:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx @manojkumarg7/my-ui init --force
+npx @manojkumarg7/my-ui add button --force
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What `init` does
 
-## Learn More
+- Adds `styles/globals.css` and `styles/utilities.css`
+- Adds `lib/utils.ts`, `lib/theme.ts`
+- Adds `hooks/useTheme.ts`
+- Adds `components/ui/theme-toggle.tsx`
+- Updates your app globals to import my-ui styles
+- Creates `MY_UI_THEME_LAYOUT.md` with instructions for `app/layout.tsx`
 
-To learn more about Next.js, take a look at the following resources:
+## What `add` does
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Copies the requested component into `components/ui/`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Local development
 
-## Deploy on Vercel
+```bash
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000) for the docs.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT

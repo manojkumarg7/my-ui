@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+build
+
+# App source (not part of published CLI package)
+app
+pages
+src
+public
+
+# Config & env
+.env*
+*.local
+
+# Dev & test
+coverage
+.vercel
+.eslintcache
+
+# Git & IDE
+.git
+.gitignore
+.DS_Store
+
+# Debug
+*.log
+*.log.*
+
+# TypeScript build
+*.tsbuildinfo
+next-env.d.ts
