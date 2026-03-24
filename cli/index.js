@@ -8,6 +8,7 @@ const fs = require("fs");
 const path = require("path");
 
 const cwd = process.cwd();
+
 const templateRoot = path.join(__dirname, "templates");
 
 function log(msg) {
@@ -131,6 +132,85 @@ function cmdAddBreadcrumb(force) {
   log("done.");
 }
 
+const COLLAPSE_CSS = `
+/* Collapse */
+.ui-collapse {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--ui-border);
+  border-radius: var(--ui-radius-md);
+  background-color: var(--ui-bg);
+  overflow: hidden;
+}
+
+.ui-collapse__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--ui-space-3) var(--ui-space-4);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ui-fg);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.ui-collapse__trigger:hover {
+  background-color: var(--ui-bg-muted);
+}
+
+.ui-collapse__trigger:focus-visible {
+  outline: 2px solid var(--ui-ring);
+  outline-offset: -2px;
+}
+
+.ui-collapse__trigger-text {
+  flex: 1;
+}
+
+.ui-collapse__icon {
+  flex-shrink: 0;
+  margin-left: var(--ui-space-2);
+  color: var(--ui-fg-muted);
+  transition: transform 0.2s ease;
+}
+
+.ui-collapse__icon--open {
+  transform: rotate(180deg);
+}
+
+.ui-collapse__content {
+  overflow: hidden;
+  transition: height 0.22s ease-out;
+}
+
+.ui-collapse__content-inner {
+  padding: var(--ui-space-4);
+  border-top: 1px solid var(--ui-border);
+}
+`;
+
+function ensureCollapseCssInGlobals() {
+  const stylesGlobals = path.join(cwd, "styles", "globals.css");
+  if (!fs.existsSync(stylesGlobals)) return;
+  const content = fs.readFileSync(stylesGlobals, "utf8");
+  if (content.includes("ui-collapse")) return;
+  fs.appendFileSync(stylesGlobals, COLLAPSE_CSS, "utf8");
+  log("added Collapse styles to styles/globals.css");
+}
+
+function cmdAddCollapse(force) {
+  log("adding collapse…");
+  copyTemplate("components/ui/Collapse.tsx", "components/ui/Collapse.tsx", force);
+  ensureCollapseCssInGlobals();
+  log("done.");
+}
+
 function hasFlag(name) {
   return process.argv.includes(name);
 }
@@ -160,9 +240,13 @@ function main() {
     cmdAddBreadcrumb(force);
     return;
   }
+  if (cmd === "add" && argv[1] === "collapse") {
+    cmdAddCollapse(force);
+    return;
+  }
 
   die(
-    "Usage:\n  npx my-ui init [--force]\n  npx my-ui add button [--force]\n  npx my-ui add alert [--force]\n  npx my-ui add badge [--force]\n  npx my-ui add breadcrumb [--force]",
+    "Usage:\n  npx my-ui init [--force]\n  npx my-ui add button [--force]\n  npx my-ui add alert [--force]\n  npx my-ui add badge [--force]\n  npx my-ui add breadcrumb [--force]\n  npx my-ui add collapse [--force]",
     1,
   );
 }

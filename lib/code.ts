@@ -216,3 +216,91 @@ export default function Page() {
   ];
   return <Breadcrumb items={items} separator=">" />;
 }`;
+
+export const installAddCollapseCommand = "npx my-ui add collapse";
+
+export const collapseCodeHtml = `<!-- Requires JS for toggle. Use React component for full behavior. -->
+<div class="ui-collapse">
+  <button class="ui-collapse__trigger" type="button" aria-expanded="false">
+    <span class="ui-collapse__trigger-text">Click to expand</span>
+    <svg class="ui-collapse__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+  </button>
+  <div class="ui-collapse__content" data-state="closed">
+    <div class="ui-collapse__content-inner">Content here</div>
+  </div>
+</div>`;
+
+export const collapseCodeReact = `"use client";
+
+import { useCallback, useId, useState } from "react";
+import { cn } from "@/lib/utils";
+
+export type CollapseProps = {
+  trigger: React.ReactNode;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  className?: string;
+};
+
+export function Collapse({
+  trigger,
+  children,
+  defaultOpen = false,
+  open: controlledOpen,
+  onOpenChange,
+  className,
+}: CollapseProps) {
+  const id = useId().replace(/:/g, "");
+  const [internalOpen, setInternalOpen] = useState(defaultOpen);
+  const isControlled = controlledOpen !== undefined;
+  const open = isControlled ? controlledOpen : internalOpen;
+
+  const toggle = useCallback(() => {
+    const next = !open;
+    if (!isControlled) setInternalOpen(next);
+    onOpenChange?.(next);
+  }, [open, isControlled, onOpenChange]);
+
+  return (
+    <div className={cn("ui-collapse", className)}>
+      <button
+        type="button"
+        className="ui-collapse__trigger"
+        onClick={toggle}
+        aria-expanded={open}
+        aria-controls={\`collapse-content-\${id}\`}
+        id={\`collapse-trigger-\${id}\`}
+      >
+        <span className="ui-collapse__trigger-text">{trigger}</span>
+        <svg className={cn("ui-collapse__icon", open && "ui-collapse__icon--open")} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m6 9 6 6 6-6" /></svg>
+      </button>
+      <div
+        id={\`collapse-content-\${id}\`}
+        className="ui-collapse__content"
+        data-state={open ? "open" : "closed"}
+        role="region"
+        aria-labelledby={\`collapse-trigger-\${id}\`}
+      >
+        <div className="ui-collapse__content-inner">{children}</div>
+      </div>
+    </div>
+  );
+}
+`;
+
+export const collapseCodeNext = `import { Collapse } from "@/components/ui";
+
+export default function Page() {
+  return (
+    <div className="ui-d-flex ui-flex-col ui-gap-4">
+      <Collapse trigger="Section 1" defaultOpen>
+        <p>Expanded content for section 1.</p>
+      </Collapse>
+      <Collapse trigger="Section 2">
+        <p>Hidden until clicked.</p>
+      </Collapse>
+    </div>
+  );
+}`;
