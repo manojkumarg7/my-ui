@@ -37,9 +37,6 @@ export function DocShell({ children }: { children: React.ReactNode }) {
               />
             </div>
             <div className="doc-topbar__actions">
-              <Link href="/docs" className="doc-topbar__link">
-                Docs
-              </Link>
               <ThemeToggle className="doc-topbar__theme" />
             </div>
           </div>

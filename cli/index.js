@@ -211,6 +211,180 @@ function cmdAddCollapse(force) {
   log("done.");
 }
 
+function cmdAddPagination(force) {
+  log("adding pagination…");
+  copyTemplate("components/ui/Pagination.tsx", "components/ui/Pagination.tsx", force);
+  log("done.");
+}
+
+function cmdAddProgress(force) {
+  log("adding progress…");
+  copyTemplate("components/ui/Progress.tsx", "components/ui/Progress.tsx", force);
+  log("done.");
+}
+
+const TOAST_CSS = `
+/* Toast */
+.ui-toast-region {
+  position: fixed;
+  bottom: var(--ui-space-4);
+  right: var(--ui-space-4);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-2);
+  max-width: 22rem;
+  width: calc(100vw - 2rem);
+  pointer-events: none;
+}
+
+.ui-toast {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  padding: var(--ui-space-3) var(--ui-space-4);
+  font-size: 0.875rem;
+  line-height: 1.45;
+  border-radius: var(--ui-radius-md);
+  border: 1px solid;
+  box-shadow:
+    0 10px 15px -3px rgb(0 0 0 / 0.08),
+    0 4px 6px -4px rgb(0 0 0 / 0.06);
+  animation: ui-toast-in 0.22s ease-out;
+}
+
+@keyframes ui-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ui-toast--default {
+  background-color: var(--ui-bg);
+  color: var(--ui-fg);
+  border-color: var(--ui-border);
+}
+
+.ui-toast--success {
+  background-color: var(--ui-alert-success-bg);
+  color: var(--ui-alert-success-fg);
+  border-color: var(--ui-alert-success-border);
+}
+
+.ui-toast--warning {
+  background-color: var(--ui-alert-warning-bg);
+  color: var(--ui-alert-warning-fg);
+  border-color: var(--ui-alert-warning-border);
+}
+
+.ui-toast--error {
+  background-color: var(--ui-alert-error-bg);
+  color: var(--ui-alert-error-fg);
+  border-color: var(--ui-alert-error-border);
+}
+
+.ui-toast__row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ui-space-2);
+}
+
+.ui-toast__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.ui-toast__title {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.ui-toast__desc {
+  margin-top: var(--ui-space-1);
+  font-size: 0.8125rem;
+  color: var(--ui-fg-muted);
+}
+
+.ui-toast--success .ui-toast__desc,
+.ui-toast--warning .ui-toast__desc,
+.ui-toast--error .ui-toast__desc {
+  color: inherit;
+  opacity: 0.9;
+}
+
+.ui-toast__close {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -0.25rem -0.25rem 0 0;
+  padding: 0;
+  font: inherit;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.65;
+  background: transparent;
+  border: none;
+  border-radius: var(--ui-radius-sm);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.ui-toast__close:hover {
+  opacity: 1;
+}
+
+.ui-toast__close:focus-visible {
+  outline: 2px solid var(--ui-ring);
+  outline-offset: 2px;
+}
+`;
+
+function ensureToastCssInGlobals() {
+  const stylesGlobals = path.join(cwd, "styles", "globals.css");
+  if (!fs.existsSync(stylesGlobals)) return;
+  const content = fs.readFileSync(stylesGlobals, "utf8");
+  if (content.includes("ui-toast-region")) return;
+  fs.appendFileSync(stylesGlobals, TOAST_CSS, "utf8");
+  log("added Toast styles to styles/globals.css");
+}
+
+function cmdAddToast(force) {
+  log("adding toast…");
+  copyTemplate("components/ui/toast.tsx", "components/ui/toast.tsx", force);
+  ensureToastCssInGlobals();
+  log("done.");
+}
+
+function ensureLiquidButtonCssInGlobals() {
+  const stylesGlobals = path.join(cwd, "styles", "globals.css");
+  if (!fs.existsSync(stylesGlobals)) return;
+  const content = fs.readFileSync(stylesGlobals, "utf8");
+  if (content.includes("ui-liquid-btn")) return;
+  const snippet = readTemplate("snippets/liquid-button.css");
+  fs.appendFileSync(stylesGlobals, "\n" + snippet, "utf8");
+  log("added Liquid Button styles to styles/globals.css");
+}
+
+function cmdAddLiquidButton(force) {
+  log("adding liquid-button…");
+  copyTemplate(
+    "components/ui/liquid-glass-button.tsx",
+    "components/ui/liquid-glass-button.tsx",
+    force,
+  );
+  ensureLiquidButtonCssInGlobals();
+  log("done.");
+}
+
 function hasFlag(name) {
   return process.argv.includes(name);
 }
@@ -244,9 +418,25 @@ function main() {
     cmdAddCollapse(force);
     return;
   }
+  if (cmd === "add" && argv[1] === "pagination") {
+    cmdAddPagination(force);
+    return;
+  }
+  if (cmd === "add" && argv[1] === "progress") {
+    cmdAddProgress(force);
+    return;
+  }
+  if (cmd === "add" && argv[1] === "toast") {
+    cmdAddToast(force);
+    return;
+  }
+  if (cmd === "add" && argv[1] === "liquid-button") {
+    cmdAddLiquidButton(force);
+    return;
+  }
 
   die(
-    "Usage:\n  npx my-ui init [--force]\n  npx my-ui add button [--force]\n  npx my-ui add alert [--force]\n  npx my-ui add badge [--force]\n  npx my-ui add breadcrumb [--force]\n  npx my-ui add collapse [--force]",
+    "Usage:\n  npx my-ui init [--force]\n  npx my-ui add button [--force]\n  npx my-ui add alert [--force]\n  npx my-ui add badge [--force]\n  npx my-ui add breadcrumb [--force]\n  npx my-ui add collapse [--force]\n  npx my-ui add pagination [--force]\n  npx my-ui add progress [--force]\n  npx my-ui add toast [--force]\n  npx my-ui add liquid-button [--force]",
     1,
   );
 }

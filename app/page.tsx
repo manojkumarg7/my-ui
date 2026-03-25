@@ -68,9 +68,6 @@ export default function Home() {
           my-ui
         </Link>
         <nav className="home-header__nav">
-          <Link href="/docs" className="ui-btn ui-btn--secondary">
-            Docs
-          </Link>
           <ThemeToggle />
         </nav>
       </header>

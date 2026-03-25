@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
+import { Providers } from "./providers";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,7 +31,9 @@ export default function RootLayout({
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className="ui-min-h-screen ui-d-flex ui-flex-col">{children}</body>
+      <body className="ui-min-h-screen ui-d-flex ui-flex-col">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

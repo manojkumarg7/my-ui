@@ -14,10 +14,14 @@ const SECTIONS = [
     label: "Components",
     items: [
       { href: "/docs/button", label: "Button" },
+      { href: "/docs/liquid-button", label: "Liquid Button" },
       { href: "/docs/alert", label: "Alert" },
       { href: "/docs/badge", label: "Badge" },
       { href: "/docs/breadcrumb", label: "Breadcrumb" },
       { href: "/docs/collapse", label: "Collapse" },
+      { href: "/docs/pagination", label: "Pagination" },
+      { href: "/docs/progress", label: "Progress" },
+      { href: "/docs/toast", label: "Toast" },
     ],
   },
 ] as const;
@@ -49,7 +53,10 @@ export function DocsSidebar() {
                   <li key={item.href} className="doc-sidebar__item">
                     <Link
                       href={item.href}
-                      className={cn("doc-sidebar__link", active && "doc-sidebar__link--active")}
+                      className={cn(
+                        "doc-sidebar__link",
+                        active && "doc-sidebar__link--active",
+                      )}
                       aria-current={active ? "page" : undefined}
                     >
                       {item.label}

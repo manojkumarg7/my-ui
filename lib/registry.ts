@@ -54,6 +54,16 @@ export const registryIndex: Record<string, RegistryEntry> = {
       { path: "lib/utils.ts", role: "util" },
     ],
   },
+  "liquid-button": {
+    name: "liquid-button",
+    description: "Liquid glass and metal buttons (SVG filter + custom CSS)",
+    dependencies: ["lib/utils.ts", "styles/globals.css"],
+    files: [
+      { path: "components/ui/liquid-glass-button.tsx", role: "component" },
+      { path: "lib/utils.ts", role: "util" },
+      { path: "styles/globals.css", role: "style", note: "includes .ui-liquid-btn and .ui-metal-btn" },
+    ],
+  },
   container: {
     name: "container",
     description: "Responsive centered container",

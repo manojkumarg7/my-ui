@@ -1,7 +1,7 @@
 {
-  "name": "@manojkumarg7/my-ui",
+  "name": "@manojkumarg5/my-ui",
   "version": "0.1.0",
-  "description": "Next.js UI framework with CLI — init styles, theme, and add components (Button, Alert, Badge, Breadcrumb)",
+  "description": "Next.js UI framework with CLI — init styles, theme, and add components (Button, Alert, Toast, Liquid Button, Pagination, Progress, …)",
   "keywords": [
     "nextjs",
     "ui",
