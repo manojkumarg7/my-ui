@@ -4,24 +4,34 @@ Next.js UI framework with CLI — init styles, theme, and add components (Button
 
 ## Installation
 
-Use the CLI in any Next.js project:
+Install the package, then use `npm exec` to run the CLI (requires npm 7+):
+
+```bash
+npm install @manojkumarg5/my-ui
+```
 
 ```bash
 # Initialize my-ui (styles, theme, globals)
-npx @manojkumarg7/my-ui init
+npm exec -- my-ui init
 
 # Add components
-npx @manojkumarg7/my-ui add button
-npx @manojkumarg7/my-ui add alert
-npx @manojkumarg7/my-ui add badge
-npx @manojkumarg7/my-ui add breadcrumb
+npm exec -- my-ui add button
+npm exec -- my-ui add alert
+npm exec -- my-ui add badge
+npm exec -- my-ui add breadcrumb
+```
+
+**One-shot without adding a dependency** (downloads and runs the published package):
+
+```bash
+npm exec --package=@manojkumarg5/my-ui -- my-ui init
 ```
 
 Use `--force` to overwrite existing files:
 
 ```bash
-npx @manojkumarg7/my-ui init --force
-npx @manojkumarg7/my-ui add button --force
+npm exec -- my-ui init --force
+npm exec -- my-ui add button --force
 ```
 
 ## What `init` does

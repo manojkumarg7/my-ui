@@ -7,7 +7,7 @@ import {
 } from "@/components/home";
 import { Button, Badge, ThemeToggle } from "@/components/ui";
 
-const HERO_CODE = `npx my-ui init`;
+const HERO_CODE = `npm exec -- my-ui init`;
 
 const BUTTON_CODE = `<Button variant="primary">
   Click me
@@ -45,7 +45,7 @@ const FEATURES = [
   },
   {
     title: "CLI Support",
-    description: "Run npx my-ui init to scaffold styles, theme, and components in seconds.",
+    description: "Run npm exec -- my-ui init to scaffold styles, theme, and components in seconds.",
     icon: "⌘",
   },
   {

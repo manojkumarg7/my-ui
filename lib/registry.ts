@@ -1,5 +1,5 @@
 /**
- * In-memory index for future CLI (`npx my-ui add <name>`).
+ * In-memory index for future CLI (`npm exec -- my-ui add <name>`).
  * Point the CLI at JSON files under /registry or import this map.
  */
 import type { ThemeMode } from "./theme";

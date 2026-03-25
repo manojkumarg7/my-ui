@@ -3,9 +3,9 @@
  * Do not auto-generate; update when `components/ui/Button.tsx` changes.
  */
 
-export const installInitCommand = "npx my-ui init";
+export const installInitCommand = "npm exec -- my-ui init";
 
-export const installAddButtonCommand = "npx my-ui add button";
+export const installAddButtonCommand = "npm exec -- my-ui add button";
 
 export const installNotes = `Creates:
 • styles/globals.css — CSS variables (light/dark), .ui-btn, .ui-container
@@ -60,7 +60,7 @@ export default function Page() {
   );
 }`;
 
-export const installAddAlertCommand = "npx my-ui add alert";
+export const installAddAlertCommand = "npm exec -- my-ui add alert";
 
 export const alertCodeHtml = `<div class="ui-alert ui-alert--default" role="alert">Default message</div>
 <div class="ui-alert ui-alert--success" role="alert">Success message</div>
@@ -113,7 +113,7 @@ export default function Page() {
   );
 }`;
 
-export const installAddBadgeCommand = "npx my-ui add badge";
+export const installAddBadgeCommand = "npm exec -- my-ui add badge";
 
 export const badgeCodeHtml = `<span class="ui-badge ui-badge--default">Default</span>
 <span class="ui-badge ui-badge--success">Success</span>
@@ -159,7 +159,7 @@ export default function Page() {
   );
 }`;
 
-export const installAddBreadcrumbCommand = "npx my-ui add breadcrumb";
+export const installAddBreadcrumbCommand = "npm exec -- my-ui add breadcrumb";
 
 export const breadcrumbCodeHtml = `<nav class="ui-breadcrumb" aria-label="Breadcrumb">
   <ol style="display:flex;align-items:center;gap:0.5rem;list-style:none;margin:0;padding:0">
@@ -217,7 +217,7 @@ export default function Page() {
   return <Breadcrumb items={items} separator=">" />;
 }`;
 
-export const installAddCollapseCommand = "npx my-ui add collapse";
+export const installAddCollapseCommand = "npm exec -- my-ui add collapse";
 
 export const collapseCodeHtml = `<!-- Requires JS for toggle. Use React component for full behavior. -->
 <div class="ui-collapse">
@@ -301,7 +301,7 @@ export default function Page() {
   );
 }`;
 
-export const installAddPaginationCommand = "npx my-ui add pagination";
+export const installAddPaginationCommand = "npm exec -- my-ui add pagination";
 
 export const paginationCodeHtml = `<nav class="ui-pagination" aria-label="Pagination">
   <ul class="ui-pagination__list">
@@ -387,7 +387,7 @@ export default function Page() {
   return <Pagination currentPage={page} totalPages={10} onPageChange={setPage} />;
 }`;
 
-export const installAddProgressCommand = "npx my-ui add progress";
+export const installAddProgressCommand = "npm exec -- my-ui add progress";
 
 export const progressCodeHtml = `<div class="ui-progress ui-progress--default" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45" aria-valuetext="45%">
   <div class="ui-progress__track" aria-hidden="true">
@@ -459,7 +459,7 @@ export default function Page() {
   );
 }`;
 
-export const installAddToastCommand = "npx my-ui add toast";
+export const installAddToastCommand = "npm exec -- my-ui add toast";
 
 export const toastCodeHtml = `<div class="ui-toast-region" aria-live="polite" aria-label="Notifications">
   <div role="status" class="ui-toast ui-toast--success">
@@ -666,10 +666,11 @@ export function ToastDemo() {
   );
 }`;
 
-export const installAddLiquidButtonCommand = "npx my-ui add liquid-button";
+export const installAddLiquidButtonCommand =
+  "npm exec -- my-ui add liquid-button";
 
 export const liquidGlassInstallNote =
-  "Preferred: run `npx my-ui add liquid-button` — copies `components/ui/liquid-glass-button.tsx` and appends Liquid/Metal (and demo layout) CSS to `styles/globals.css` when those classes are not already present. Alternatively, copy the component and merge the `.ui-liquid-btn` / `.ui-metal-btn` rules from `styles/globals.css` in this repo.";
+  "Preferred: run `npm exec -- my-ui add liquid-button` — copies `components/ui/liquid-glass-button.tsx` and appends Liquid/Metal (and demo layout) CSS to `styles/globals.css` when those classes are not already present. Alternatively, copy the component and merge the `.ui-liquid-btn` / `.ui-metal-btn` rules from `styles/globals.css` in this repo.";
 
 export const liquidGlassButtonCodeReact = `import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 

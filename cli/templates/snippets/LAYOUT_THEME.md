@@ -1,6 +1,6 @@
 # my-ui — theme integration (App Router)
 
-After `npx my-ui init`, wire the theme into your root layout:
+After `npm exec -- my-ui init`, wire the theme into your root layout:
 
 1. **Import** `THEME_STORAGE_KEY` from `@/lib/theme`.
 2. **Add** the inline script in `<head>` so the `dark` class is applied before paint (no flash).

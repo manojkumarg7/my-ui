@@ -105,7 +105,7 @@ function cmdInit(force) {
   copySnippetToProject("snippets/LAYOUT_THEME.md", "MY_UI_THEME_LAYOUT.md", force);
 
   log("done. Next: follow MY_UI_THEME_LAYOUT.md to update app/layout.tsx (theme script + suppressHydrationWarning).");
-  log('Then run `npx my-ui add button` or copy components from the docs.');
+  log('Then run `npm exec -- my-ui add button` or copy components from the docs.');
 }
 
 function cmdAddButton(force) {
@@ -436,7 +436,7 @@ function main() {
   }
 
   die(
-    "Usage:\n  npx my-ui init [--force]\n  npx my-ui add button [--force]\n  npx my-ui add alert [--force]\n  npx my-ui add badge [--force]\n  npx my-ui add breadcrumb [--force]\n  npx my-ui add collapse [--force]\n  npx my-ui add pagination [--force]\n  npx my-ui add progress [--force]\n  npx my-ui add toast [--force]\n  npx my-ui add liquid-button [--force]",
+    "Usage:\n  npm exec -- my-ui init [--force]\n  npm exec -- my-ui add button [--force]\n  npm exec -- my-ui add alert [--force]\n  npm exec -- my-ui add badge [--force]\n  npm exec -- my-ui add breadcrumb [--force]\n  npm exec -- my-ui add collapse [--force]\n  npm exec -- my-ui add pagination [--force]\n  npm exec -- my-ui add progress [--force]\n  npm exec -- my-ui add toast [--force]\n  npm exec -- my-ui add liquid-button [--force]",
     1,
   );
 }

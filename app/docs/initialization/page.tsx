@@ -21,7 +21,7 @@ export default function InitializationDocPage() {
         <p className="doc-lead ui-mb-4" style={{ marginTop: 0 }}>
           Run from your project root. In this repository use{" "}
           <code className="doc-code__inline">npm run my-ui -- init</code>. When the package is published, use{" "}
-          <code className="doc-code__inline">npx my-ui init</code>.
+          <code className="doc-code__inline">npm exec -- my-ui init</code>.
         </p>
         <CodeBlock title="Initialize design system" code={installInitCommand} />
         <div className="doc-stack">
