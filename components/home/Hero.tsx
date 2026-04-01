@@ -27,7 +27,7 @@ export function Hero({
             <Link href="/docs/initialization" className="home-hero__btn home-hero__btn--primary">
               Get Started
             </Link>
-            <Link href="/docs" className="home-hero__btn home-hero__btn--secondary">
+            <Link href="/docs/initialization" className="home-hero__btn home-hero__btn--secondary">
               View Components
             </Link>
           </div>

@@ -15,6 +15,7 @@ const SECTIONS = [
     items: [
       { href: "/docs/button", label: "Button" },
       { href: "/docs/liquid-button", label: "Liquid Button" },
+      { href: "/docs/shader-animation", label: "Shader Animation" },
       { href: "/docs/alert", label: "Alert" },
       { href: "/docs/badge", label: "Badge" },
       { href: "/docs/breadcrumb", label: "Breadcrumb" },

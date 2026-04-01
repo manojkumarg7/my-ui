@@ -700,3 +700,31 @@ export default function Page() {
     <LiquidButton size="xxl">Liquid Glass</LiquidButton>
   );
 }`;
+
+export const shaderAnimationInstallNote = `Shader animation background — setup (do these in order)
+
+1) Copy the component file into your project
+   Target path:
+   components/ui/animated-shader-background.tsx
+   Copy the source from this repository's components/ui folder (same path).
+
+2) Install the Three.js package
+   npm install three
+
+3) TypeScript types (only if needed)
+   If the compiler or IDE reports missing types for the "three" import, run:
+   npm install -D @types/three
+
+4) Keep it a Client Component
+   The file must start with "use client" (already there). Do not remove that line.
+   You may import it from a Server Component page — Next.js will still ship it to the client.`;
+
+export const shaderAnimationCodeNext = `import AnimatedShaderBackground from "@/components/ui/animated-shader-background";
+
+export default function Page() {
+  return (
+    <AnimatedShaderBackground>
+      <p style={{ color: "#fff", padding: "2rem" }}>Content above the shader</p>
+    </AnimatedShaderBackground>
+  );
+}`;

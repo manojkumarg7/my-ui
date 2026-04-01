@@ -130,7 +130,7 @@ export default function Home() {
 
         <footer className="home-footer">
           <p className="home-footer__text">
-            <Link href="/docs" className="home-footer__link">
+            <Link href="/docs/initialization" className="home-footer__link">
               Documentation
             </Link>
             {" · "}

@@ -19,6 +19,9 @@ const themeInitScript = `(function(){var k=${JSON.stringify(THEME_STORAGE_KEY)};
 export const metadata: Metadata = {
   title: "my-ui",
   description: "Minimal UI framework foundation",
+  icons: {
+    icon: "/globe.svg",
+  },
 };
 
 export default function RootLayout({
